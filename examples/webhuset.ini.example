@@ -1,0 +1,6 @@
+# Webhuset customer portal -> Account -> API keys -> DNS: Manage.
+dns_webhuset_api_key = REPLACE_WITH_YOUR_WEBHUSET_API_KEY
+
+# Optional: explicitly select one zone when automatic SOA discovery is unsuitable.
+# Omit this for certificates spanning multiple DNS zones.
+# dns_webhuset_zone = example.com

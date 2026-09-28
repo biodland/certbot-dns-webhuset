@@ -1,0 +1,17 @@
+{
+  "webhuset_api_key": "SETT_INN_API_NOKKEL",
+  "zone": "communitynord.com",
+  "domains": ["communitynord.com", "*.communitynord.com", "*.admin.communitynord.com"],
+  "npm_url": "http://172.16.0.25:81",
+  "npm_identity": "birger@odland.im",
+  "npm_password": "SETT_INN_NPM_PASSORD",
+  "npm_certificate_id": 62,
+  "npm_certificate_name": "communitynord.com",
+  "npm_test_command": ["docker", "exec", "SETT_INN_NPM_CONTAINERNAVN", "nginx", "-t"],
+  "npm_reload_command": ["docker", "exec", "SETT_INN_NPM_CONTAINERNAVN", "nginx", "-s", "reload"],
+  "certificate_dir": "/etc/letsencrypt/live/communitynord.com",
+  "state_dir": "/var/lib/communitynord-certbot",
+  "dns_timeout_seconds": 1200,
+  "dns_poll_seconds": 20,
+  "dns_resolvers": ["1.1.1.1", "8.8.8.8"]
+}

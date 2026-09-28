@@ -1,0 +1,10 @@
+{
+  "webhuset": {
+    "credentials": "dns_webhuset_api_key = REPLACE_WITH_YOUR_WEBHUSET_API_KEY",
+    "dependencies": "",
+    "full_plugin_name": "dns-webhuset",
+    "name": "Webhuset",
+    "package_name": "certbot-dns-webhuset",
+    "version": "==0.1.0a1"
+  }
+}

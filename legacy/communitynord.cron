@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+# Installer som /etc/cron.d/communitynord-certbot (root eier, modus 0644).
+# Certbot avgjoer naar fornyelse trengs. Feil logges i syslog/journal.
+17 4 * * * root /bin/bash -o pipefail -c '/opt/communitynord-certbot/communitynord.sh renew 2>&1 | /usr/bin/logger -t communitynord-certbot'

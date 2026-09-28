@@ -1,0 +1,46 @@
+# Python virtual environments
+.venv/
+venv/
+ENV/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyre/
+
+# Coverage and test output
+.coverage
+.coverage.*
+htmlcov/
+pytestdebug.log
+
+# Packaging / build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Local secrets and generated config
+*.ini
+!*.ini.example
+automation.json
+secrets/
+letsencrypt/
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Optional local artifacts
+*.har
+

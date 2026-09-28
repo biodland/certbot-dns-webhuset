@@ -1,0 +1,5 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# /etc/cron.d/certbot-webhuset; root-owned, mode 0644, requires cron + util-linux.
+# Run only if no existing scheduler already uses this Certbot installation.
+23 3,15 * * * root /usr/bin/flock -n /run/lock/certbot-webhuset.lock /opt/certbot-webhuset/bin/certbot renew --quiet
