@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.0a2
+ - Updated to use node 24 instead of 20.
+
 ## 0.1.0a1
 
 - Native Certbot `dns-webhuset` authenticator and read-only connectivity check.
