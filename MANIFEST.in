@@ -1,6 +1,8 @@
-include README.md CHANGELOG.md Dockerfile .dockerignore
+include README.md README.no.md CHANGELOG.md LICENSE CONTRIBUTING.md Dockerfile .dockerignore
 recursive-include examples *.example *.cron
 recursive-include integrations *.json *.md
 recursive-include tests *.py
 recursive-include docs *.md
+recursive-include snap *.yaml *.sh
+prune legacy
 global-exclude __pycache__ *.py[cod] *.har

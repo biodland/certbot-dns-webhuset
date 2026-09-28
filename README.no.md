@@ -183,9 +183,9 @@ docker run --rm certbot-webhuset:test
 
 Testene bruker simulerte HTTP/DNS-svar og ekte Certbot-pluginlasting. Ingen
 produksjons-DNS eller ACME-konto endres. Før offentlig publisering gjenstår
-staging-utstedelse og fornyelse mot Webhuset, valg av lisens, prosjekteier/
-publiseringskonto og verifisert NPM-integrasjon. Ingen automatisk publisering
-er konfigurert.
+staging-utstedelse og fornyelse mot Webhuset og verifisert NPM-integrasjon.
+Prosjektet bruker MIT-lisensen. CI og manuelle publiseringsjobber er inkludert;
+publiseringskontoene må konfigureres separat. Vanlig push publiserer ingen pakker.
 
 ## Referanser
 
@@ -193,3 +193,9 @@ er konfigurert.
 - [Webhuset API-nøkler](https://www.webhuset.no/hjelp/min-konto/api-n-kler-koble-ai-assistenter-og-automatisering-til-webhuset-mcp)
 - [Certbot DNSAuthenticator](https://eff-certbot.readthedocs.io/en/stable/api/certbot.plugins.dns_common.html)
 - [Certbot fornyelse](https://eff-certbot.readthedocs.io/en/stable/using.html#renewing-certificates)
+
+## Distribusjon og bidrag
+
+Se [publiseringsoppsett](docs/RELEASING.md), [Snap-pakking](docs/SNAP.md) og [bidragsveiledning](CONTRIBUTING.md). Dette er en uavhengig tredjepartsplugin, uten offisiell godkjenning fra Certbot, Webhuset eller NPM.
+
+Lisens: [MIT](LICENSE).

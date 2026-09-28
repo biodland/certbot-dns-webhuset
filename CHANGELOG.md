@@ -8,5 +8,8 @@
 - Multiple domains/zones and simultaneous apex/wildcard DNS challenges.
 - Value-specific cleanup with preservation of pre-existing records.
 - Local package build, standalone Docker image, tests and NPM provider draft.
+- MIT license, public repository metadata, and contribution/release guides.
+- CI with Python/Certbot compatibility checks and manual Trusted Publishing.
+- Core24 Certbot content-snap recipe and manual build/discovery workflow.
 
 This is an unpublished alpha. Live Webhuset/ACME validation is still required.

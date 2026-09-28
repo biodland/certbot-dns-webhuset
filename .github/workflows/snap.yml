@@ -1,0 +1,27 @@
+name: Build and test Snap
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  snap:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: snapcore/action-build@v1
+        id: snapcraft
+      - name: Test content connection and Certbot discovery
+        env:
+          PLUGIN_SNAP: ${{ steps.snapcraft.outputs.snap }}
+        run: |
+          sudo snap install --classic certbot
+          sudo snap set certbot trust-plugin-with-root=ok
+          sudo snap install --dangerous "$PLUGIN_SNAP"
+          sudo snap connect certbot:plugin certbot-dns-webhuset:certbot
+          sudo /snap/bin/certbot plugins | tee /tmp/plugins.txt
+          grep -q 'dns-webhuset' /tmp/plugins.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: certbot-dns-webhuset-snap
+          path: ${{ steps.snapcraft.outputs.snap }}
+          if-no-files-found: error

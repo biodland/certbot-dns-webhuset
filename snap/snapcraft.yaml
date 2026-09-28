@@ -1,0 +1,24 @@
+name: certbot-dns-webhuset
+summary: Webhuset DNS authenticator for Certbot
+description: |
+  Third-party DNS-01 plugin using Webhuset's MCP API. Connect this content
+  snap to the Certbot snap to issue and renew certificates with Webhuset DNS.
+  This alpha release requires staging validation before production use.
+base: core24
+confinement: strict
+grade: devel
+adopt-info: webhuset
+parts:
+  webhuset:
+    plugin: nil
+    source: .
+    build-packages: [python3-venv, python3-pip]
+    override-build: |
+      craftctl set version="$(python3 -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')"
+      sh snap/local/build-plugin.sh
+slots:
+  certbot:
+    interface: content
+    content: certbot-1
+    read:
+      - $SNAP/lib/python3.12/site-packages

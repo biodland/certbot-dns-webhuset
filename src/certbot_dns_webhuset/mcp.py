@@ -3,6 +3,7 @@
 import json
 import time
 from contextlib import suppress
+from importlib.metadata import version
 
 import requests
 from certbot import errors
@@ -36,7 +37,10 @@ class MCPClient:
             {
                 "protocolVersion": PROTOCOL,
                 "capabilities": {},
-                "clientInfo": {"name": "certbot-dns-webhuset", "version": "0.1.0a1"},
+                "clientInfo": {
+                    "name": "certbot-dns-webhuset",
+                    "version": version("certbot-dns-webhuset"),
+                },
             },
         )
         if result.get("protocolVersion") != PROTOCOL:

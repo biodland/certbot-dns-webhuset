@@ -7,6 +7,9 @@ name = "certbot-dns-webhuset"
 version = "0.1.0a1"
 description = "Certbot DNS-01 authenticator for Webhuset's MCP API"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "certbot-dns-webhuset contributors"}]
 requires-python = ">=3.10"
 dependencies = ["certbot>=4,<6", "dnspython>=2.6,<3", "requests>=2.31,<3"]
 classifiers = [
@@ -16,6 +19,12 @@ classifiers = [
   "Programming Language :: Python :: 3",
   "Topic :: Internet :: WWW/HTTP",
 ]
+
+[project.urls]
+Homepage = "https://github.com/biodland/certbot-dns-webhuset"
+Repository = "https://github.com/biodland/certbot-dns-webhuset"
+Issues = "https://github.com/biodland/certbot-dns-webhuset/issues"
+Changelog = "https://github.com/biodland/certbot-dns-webhuset/blob/main/CHANGELOG.md"
 
 [project.entry-points."certbot.plugins"]
 dns-webhuset = "certbot_dns_webhuset.dns_webhuset:Authenticator"
@@ -36,6 +45,7 @@ addopts = "-ra"
 [tool.ruff]
 target-version = "py310"
 line-length = 100
+extend-exclude = ["legacy"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]

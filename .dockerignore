@@ -15,3 +15,12 @@ secrets
 letsencrypt
 automation.json
 
+
+# Snapcraft build output
+.snap-build-venv/
+.snapcraft/
+parts/
+stage/
+prime/
+*.snap
+*.assert

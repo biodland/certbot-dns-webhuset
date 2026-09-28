@@ -1,4 +1,5 @@
 import json
+from importlib.metadata import metadata, version
 from pathlib import Path
 from subprocess import run
 
@@ -29,3 +30,10 @@ def test_npm_fragment_matches_plugin():
     assert entry["full_plugin_name"] == "dns-webhuset"
     assert entry["package_name"] == "certbot-dns-webhuset"
     assert "dns_webhuset_api_key" in entry["credentials"]
+    assert entry["version"] == "==" + version("certbot-dns-webhuset")
+
+
+def test_distribution_declares_mit_license():
+    package = metadata("certbot-dns-webhuset")
+    assert package["License-Expression"] == "MIT"
+    assert "LICENSE" in package.get_all("License-File", [])

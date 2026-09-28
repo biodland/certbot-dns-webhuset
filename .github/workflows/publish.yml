@@ -1,0 +1,57 @@
+name: Publish Python package
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: Destination (run this workflow from a matching version tag)
+        type: choice
+        options: [testpypi, pypi]
+        default: testpypi
+        required: true
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require tag matching package version
+        run: |
+          python - <<'PY'
+          import os
+          import tomllib
+          from pathlib import Path
+          version = tomllib.loads(Path('pyproject.toml').read_text())['project']['version']
+          if os.environ['GITHUB_REF'] != 'refs/tags/v' + version:
+              raise SystemExit('Select the exact version tag: v' + version)
+          PY
+      - run: python -m pip install -e '.[test]'
+      - run: ruff check . && pytest
+      - run: python -m build && python -m twine check --strict dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: python-distributions
+          path: dist/
+          if-no-files-found: error
+  publish:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment: ${{ inputs.repository }}
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-distributions
+          path: dist/
+      - name: Publish to TestPyPI
+        if: inputs.repository == 'testpypi'
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+      - name: Publish to PyPI
+        if: inputs.repository == 'pypi'
+        uses: pypa/gh-action-pypi-publish@release/v1

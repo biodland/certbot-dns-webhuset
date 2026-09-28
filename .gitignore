@@ -44,3 +44,12 @@ Thumbs.db
 # Optional local artifacts
 *.har
 
+
+# Snapcraft build output
+.snap-build-venv/
+.snapcraft/
+parts/
+stage/
+prime/
+*.snap
+*.assert

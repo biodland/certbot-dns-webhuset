@@ -1,4 +1,5 @@
 import json
+from importlib.metadata import version
 from unittest.mock import Mock
 
 import pytest
@@ -52,6 +53,8 @@ def test_handshake_keeps_session_and_notification_has_no_id():
     ]
     client = MCPClient("SECRET", session=session)
     client.initialize()
+    handshake = session.post.call_args_list[0].kwargs["json"]["params"]["clientInfo"]
+    assert handshake["version"] == version("certbot-dns-webhuset")
     call = session.post.call_args.kwargs
     assert call["json"]["method"] == "notifications/initialized"
     assert "id" not in call["json"]

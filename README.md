@@ -159,7 +159,7 @@ docker build --target test -t certbot-webhuset:test .
 docker run --rm certbot-webhuset:test
 ```
 
-The tests use simulated HTTP/DNS responses and real Certbot plugin loading. No production DNS or ACME account is changed. Before public publication, staging issuance and renewal against Webhuset, license choice, project owner/publishing account, and verified NPM integration still remain. No automatic publication is configured.
+The tests use simulated HTTP/DNS responses and real Certbot plugin loading. No production DNS or ACME account is changed. Before production use, staging issuance and renewal against Webhuset and verified NPM integration still remain. The project uses the MIT license. CI and manual PyPI/TestPyPI and Snap build workflows are included; registry accounts still need configuration. Normal pushes do not publish packages.
 
 ## References
 
@@ -167,3 +167,9 @@ The tests use simulated HTTP/DNS responses and real Certbot plugin loading. No p
 - [Webhuset API keys](https://www.webhuset.no/hjelp/min-konto/api-n-kler-koble-ai-assistenter-og-automatisering-til-webhuset-mcp)
 - [Certbot DNSAuthenticator](https://eff-certbot.readthedocs.io/en/stable/api/certbot.plugins.dns_common.html)
 - [Certbot renewal](https://eff-certbot.readthedocs.io/en/stable/using.html#renewing-certificates)
+
+## Distribution and contributing
+
+See [release setup](docs/RELEASING.md), [Snap packaging](docs/SNAP.md), and [contribution guidelines](CONTRIBUTING.md). This is an independent third-party Certbot plugin, not an official Certbot, Webhuset, or NPM product.
+
+Licensed under [MIT](LICENSE). [Norsk dokumentasjon](README.no.md).
