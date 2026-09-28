@@ -11,5 +11,4 @@
 - MIT license, public repository metadata, and contribution/release guides.
 - CI with Python/Certbot compatibility checks and manual Trusted Publishing.
 - Core24 Certbot content-snap recipe and manual build/discovery workflow.
-
-This is an unpublished alpha. Live Webhuset/ACME validation is still required.
+- Validated and tested against Webhuset and ACME
